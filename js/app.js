@@ -44,3 +44,43 @@ let enigme3 = new enigmas (`4+4`,8);
 
 
 
+// heroes
+
+// warrior
+class Warrior {
+  constructor(name,healthPoints,attackPoints,ragePoints){
+    this.name = prompt(`whats this warriors name?`);
+    this.healthPoints = 0;
+    this.attackPoints = 0;
+    this.ragePoints = 0;
+  }
+  attack(){
+
+  };
+  block(){
+
+  };
+}
+let warrior = new Warrior()
+console.log(warrior);
+
+
+// health point distribution system
+let generalHitPoints = 150;
+
+while (generalHitPoints > 0) {
+  heroChoice = prompt(`you have ${generalHitPoints} health points left, which hero would you like to assign it to?`);
+  
+  if (heroChoice == `warrior`) {
+    healthToWarrior = prompt(`how much health would you like to add to your warrior?`)
+    if (healthToWarrior > generalHitPoints) {
+      alert(`you dont have enough health points to spend`)
+    }else{
+      healthToWarrior = parseInt(healthToWarrior)
+      warrior.healthPoints = warrior.healthPoints+healthToWarrior;
+      generalHitPoints = generalHitPoints - healthToWarrior;
+    }
+    
+  }
+}
+alert(`${warrior.healthPoints}`)
