@@ -10,7 +10,7 @@ class Boss {
 }
 
 // boss Lilith
-let lilith = new Boss(`Lilith`, 100, 5);
+let lilith = new Boss(`Lilith`, 500, 5);
 
 
 //  while (lilith.healthPoints > 20) {
@@ -124,7 +124,7 @@ function distributeHp() {
 
   }
 }
-// distributeHp()
+ distributeHp()
 let generalAttackPoints = 200;
 function distributeAttackPoints() {
   while (generalAttackPoints > 0) {
@@ -164,5 +164,32 @@ function distributeAttackPoints() {
     }
   }
   }
-  
- 
+  distributeAttackPoints()
+//  combat 
+
+let party = []
+party.push(warrior,mage,archer);
+
+let totalPartyHealth = mage.healthPoints+archer.healthPoints+warrior.healthPoints;
+let confirmStartFightLilith = confirm(`do you want to fight lilith`)
+if (confirmStartFightLilith == true) {
+  startFightLilith()
+}else if (confirmStartFightLilith == false) {
+  alert(`coward`)
+}
+
+function startFightLilith() {
+  while (lilith.healthPoints >= 0 && totalPartyHealth >=0) {
+    lilith.healthPoints -= party[0].attackPoints
+   console.log(`${party[0].name} the warrior has hit Lilith for ${party[0].attackPoints} damage `);
+   lilith.healthPoints -= party[1].attackPoints
+   console.log(`${party[1].name} the mage has hit Lilith for ${party[1].attackPoints} damage `);
+   lilith.healthPoints -= party[2].attackPoints
+   console.log(`${party[2].name} the archer has hit Lilith for ${party[2].attackPoints} damage `);
+  }
+  if (lilith.healthPoints<= 0) {
+    alert(`you have defeated Lilith!`)
+  } else if (totalPartyHealth <= 0) {
+    alert(`you have lost`)
+  }
+}
